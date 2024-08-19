@@ -1,0 +1,14 @@
+.about-us-text {
+    width: 100%; 
+    max-width: 70%; 
+    box-sizing: border-box; 
+    word-wrap: break-word;  
+    overflow-wrap: break-word; 
+    padding: 10px; 
+    margin: auto;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+    color: #444444;
+    background-color: #ddddff;
+    border-radius: 10px;
+}

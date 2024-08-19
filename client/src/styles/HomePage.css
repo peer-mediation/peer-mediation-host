@@ -1,0 +1,44 @@
+.home-page {
+    background-color: #48474a;
+    padding: 20px;
+    min-height: 100vh;
+    background: linear-gradient(270deg, #ff6ec4, #7873f5, #4fc3f7);
+    background-size: 600% 600%;
+    animation: gradientAnimation 16s ease infinite;
+  }
+
+  @keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+  
+  .home-page h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 35px; 
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .home-page button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+    color: white;
+  }
+  
+  .home-page button:hover {
+    background-color: darkblue;
+  }
