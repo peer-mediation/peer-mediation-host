@@ -1,7 +1,7 @@
 import React from 'react';
 import "../styles/Chat.css"
 import { useState, useEffect } from 'react';
-import {addWord, getWords, addCookie} from "../utils/api"
+import {addMessage, getMessages, addCookie} from "../utils/api"
 import { getLoginCookie } from '../utils/cookie';
 
 export interface adminData {
@@ -24,7 +24,7 @@ const Chat: React.FunctionComponent<adminData> = (props) => {
 
     //use effect hook to get the messages from the backend and set the state variable
     useEffect(() => {
-        getWords(USER_ID).then((data) => {
+        getMessages(USER_ID).then((data) => {
             setMessages(data.words)
         });
     }, []);
@@ -51,7 +51,7 @@ const Chat: React.FunctionComponent<adminData> = (props) => {
         if (props.uid === null) {
             await addCookie(USER_ID);
         } 
-        await addWord(USER_ID, newMessage);
+        await addMessage(USER_ID, newMessage);
     };
 
     return (

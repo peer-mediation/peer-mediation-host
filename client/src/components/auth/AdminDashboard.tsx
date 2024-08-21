@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from "react";
 import "../../styles/AdminDashboard.css"
-import { getCookies, getAdminLogin } from '../../utils/api';
+import { getCookies, verifyAdmin } from '../../utils/api';
 import { useEffect} from "react";
 import Chat from "../Chat";
 
@@ -13,15 +13,6 @@ const AdminDashboard: React.FunctionComponent = () => {
   const [cookies, setCookies] = useState<string[]>([]);
   const [hasReplied, setHasReplied] = useState<boolean[]>([]);
   const [activeChat, setActiveChat] = useState('');
-  const [adminUsername, setAdminUsername] = useState('');
-  const [adminPassword, setAdminPassword] = useState('');
-
-  useEffect(() => {
-    getAdminLogin().then((data) => {
-      setAdminUsername(data.username);
-      setAdminPassword(data.password);
-    });
-  });
 
   useEffect(() => {
       getCookies().then((data) => {
@@ -36,12 +27,14 @@ const AdminDashboard: React.FunctionComponent = () => {
   };
 
   const handleLogin = () => {
-    if (username === adminUsername && password === adminPassword) {
-      setIsAuthenticated(true);
-      setErrorMessage('');
-    } else {
-      setErrorMessage('Invalid username or password. Please try again.');
-    }
+    verifyAdmin(username, password).then((data) => {
+      if (data.isVerified) {
+        setIsAuthenticated(true);
+        setErrorMessage('');
+      } else {
+        setErrorMessage('Invalid username or password. Please try again.');
+      }
+    });
   };
 
   if (isAuthenticated) {

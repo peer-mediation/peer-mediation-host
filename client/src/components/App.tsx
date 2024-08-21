@@ -38,6 +38,7 @@ function App() {
       <div>
         <div aria-label="loading page" className="loading-container">
           <div aria-label="loading" className="loading"></div>
+          <div aria-label="loading label" className="loading-label">Loading...</div>
         </div>
       </div>
     );

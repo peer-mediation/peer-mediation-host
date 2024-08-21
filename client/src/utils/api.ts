@@ -1,8 +1,8 @@
 import { getLoginCookie } from "./cookie";
 
 //backend to be queried
-const HOST = "http://localhost:8080"; 
-//const HOST = "http://peer-mediation-api.us-east-1.elasticbeanstalk.com"
+//const HOST = "http://localhost:8080"; 
+const HOST = "http://peer-mediation-api.us-east-1.elasticbeanstalk.com"
 
 /**
  * This general function makes a query to the backend specified by the endpoint and appropriate
@@ -30,10 +30,10 @@ async function queryAPI(
  * @param word the message that needs to be stored under the uid in the Firestore db
  * @returns the backend response
  */
-export async function addWord(uid: string, word: string) {
-  return await queryAPI("add-word", {
+export async function addMessage(uid: string, message: string) {
+  return await queryAPI("add-message", {
     uid: uid,
-    word: word,
+    message: message,
   });
 }
 
@@ -42,8 +42,8 @@ export async function addWord(uid: string, word: string) {
  * under the specific uid
  * @param uid the uid of the user
  */
-export async function getWords(uid: string) {
-  return await queryAPI("list-words", {
+export async function getMessages(uid: string) {
+  return await queryAPI("list-messages", {
     uid: uid,
   });
 }
@@ -78,21 +78,22 @@ export async function addCookie(cookie: string) {
 }
 
 /**
- * This function handles the get-admin-login endpoint and it retrieves the admin username and password
- * from the backend. 
- */
-export async function getAdminLogin() {
-  return await queryAPI("get-admin-login", {
-    uid: "admin",
-  });
-}
-
-/**
  * This function handles the retrieval of all the necessary information to initalize the firebase
  * from the backend
  */
 export async function getAPIInfo() {
   return await queryAPI("get-api-info", {
     uid: "api"
+  });
+}
+
+/**
+ * This function takes in a username and password as query parameters and determines if it is the
+ * correct username and password for admin login. 
+ */
+export async function verifyAdmin(username: string, password: string) {
+  return await queryAPI("verify-admin", {
+    username: username,
+    password: password
   });
 }

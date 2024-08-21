@@ -2,6 +2,7 @@
   "name": "maps-gearup",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://peer-mediation.github.io/peer-mediation-host",
   "type": "module",
   "scripts": {
     "start": "vite",
@@ -9,7 +10,9 @@
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@types/node": "^16.11.36",
@@ -33,6 +36,7 @@
     "@vitejs/plugin-react": "^3.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.15.0",
+    "gh-pages": "^6.1.1",
     "typescript": "^4.9.3",
     "vite": "^4.2.0",
     "vitest": "^1.2.1",
