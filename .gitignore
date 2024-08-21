@@ -3,6 +3,7 @@
 resources/
 target/
 private/
+server/
 
 node_modules
 .pnp
